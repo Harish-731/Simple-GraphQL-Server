@@ -12,8 +12,8 @@ class Query(ObjectType):
 
 schema = graphene.Schema(query=Query)
 
-app.route("/", methods=['POST'])
-def hello():
+app.route("/graphql", methods=['POST'])
+def graphql():
     data = json.loads(request.data)
     return json.dumps(schema.execute(data['query']).data)
 
